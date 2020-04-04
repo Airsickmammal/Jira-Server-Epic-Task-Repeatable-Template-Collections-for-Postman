@@ -1,0 +1,659 @@
+{
+	"info": {
+		"_postman_id": "893f170f-b96f-41fa-b8a5-be452c9f6560",
+		"name": "Jira Server Epic/Task Template Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Queries",
+			"item": [
+				{
+					"name": "Get Issue Link Types",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{JiraHost}}/rest/api/2/issueLinkType",
+							"protocol": "https",
+							"host": [
+								"{{JiraHost}}"
+							],
+							"path": [
+								"rest",
+								"api",
+								"2",
+								"issueLinkType"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Issue Fields",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{JiraHost}}/rest/api/2/search?jql=key=ABC-123",
+							"protocol": "https",
+							"host": [
+								"{{JiraHost}}"
+							],
+							"path": [
+								"rest",
+								"api",
+								"2",
+								"search"
+							],
+							"query": [
+								{
+									"key": "jql",
+									"value": "key=ABC-123"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Versions",
+			"item": [
+				{
+					"name": "Create version",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"description\":\"{{Version}}\",\"name\":\"{{Version}}\",\"archived\":false,\"released\":true,\"releaseDate\":\"YYYY-MM-DD\",\"project\":\"{{Project Key}}\"}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "https://{{JiraHost}}/rest/api/2/version",
+							"protocol": "https",
+							"host": [
+								"{{JiraHost}}"
+							],
+							"path": [
+								"rest",
+								"api",
+								"2",
+								"version"
+							]
+						},
+						"description": "Creates a project version.\n\n <b><a href=\"https://confluence.atlassian.com/x/FQiiLQ\">Permissions</a> required:</b> <em>Administer Jira</em>\n <a href=\"https://confluence.atlassian.com/x/x4dKLg\">global permission</a>\n or <em>Administer Projects</em> <a href=\"https://confluence.atlassian.com/x/yodKLg\">project permission</a>. "
+					},
+					"response": []
+				},
+				{
+					"name": "Get Project Versions",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://{{JiraHost}}/rest/api/2/project/{{Project Key}}/version",
+							"protocol": "https",
+							"host": [
+								"{{JiraHost}}"
+							],
+							"path": [
+								"rest",
+								"api",
+								"2",
+								"project",
+								"{{Project Key}}",
+								"version"
+							],
+							"query": [
+								{
+									"key": "expand",
+									"value": "{{expand}}",
+									"description": "Use expand to include additional information about version in the response. This parameter accepts multiple values separated by a comma:\n               \n               operations Returns the list of operations available for this version.\n               remotelinks Returns the list of remote links stored against this version.\n               issuesstatus Returns the count of issues in this version for each of the status categories to do,\n               in progress, done, and unmapped. The unmapped\n               property represents the number of issues with a status other than to do, in progress, and done.\n               ",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Returns a project version.\n\n <a href=\"https://confluence.atlassian.com/x/FQiiLQ\">Permissions</a> required:</b> <em>Browse projects</em>\n <a https://confluence.atlassian.com/x/yodKLg\">project permission</a> "
+					},
+					"response": []
+				},
+				{
+					"name": "Update version",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"value": "application/json",
+								"key": "Accept"
+							},
+							{
+								"value": "application/json",
+								"key": "Content-Type"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"self\":\"https://{{JiraHost}}/rest/api/2/version/:id\",\n\t\"id\":\":id\",\n\t\"description\":\"{{Version}}\",\n\t\"name\":\"{{Version}}\",\n\t\"archived\":false,\n\t\"released\":true,\n\t\"releaseDate\":\"YYYY-MM-DD\",\n\t\"overdue\":false\n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "https://{{JiraHost}}/rest/api/2/version/:id",
+							"protocol": "https",
+							"host": [
+								"{{JiraHost}}"
+							],
+							"path": [
+								"rest",
+								"api",
+								"2",
+								"version",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "12345",
+									"description": "VERSION ID - USE GET PROJECT VERSIONS FIRST"
+								}
+							]
+						},
+						"description": "Modifies a project version.\n\n <b><a href=\"https://confluence.atlassian.com/x/FQiiLQ\">Permissions</a> required:</b> <em>Administer Jira</em>\n <a href=\"https://confluence.atlassian.com/x/x4dKLg\">global permission</a>\n or <em>Administer Projects</em> <a href=\"https://confluence.atlassian.com/x/yodKLg\">project permission</a>. "
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "1) EPIC Post",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "79870ca9-68e3-49e2-82c0-56e3008904a7",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"var resultKey = jsonData.issues[0].key ",
+							"pm.collectionVariables.set(\"EPIC KEY\",jsonData.issues[0].key)"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "809db8f4-7651-4942-9ea8-d86793b4f348",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"issueUpdates\": \r\n    [\r\n        {\r\n      \"fields\":\r\n      {\r\n        \"project\": \r\n          {\r\n          \"key\": \"{{Project Key}}\"\r\n          },\r\n        \"customfield_#####\": \"{{EPIC REF}} - {{EPIC NAME}}\", --EPICLINK (Remove this comment before running)\r\n        \"summary\": \"{{EPIC REF}} - {{EPIC NAME}}\",\r\n        \"issuetype\": \r\n        {\r\n          \"name\": \"Epic\"\r\n        },\r\n        \"priority\": \r\n        {\r\n          \"name\": \"3\",\r\n          \"id\": \"8\" \t\t\t\t\t\t\t\t--IF ID NEEDED (Remove this comment before running)\r\n        },\r\n        \"reporter\": \r\n        {\r\n          \"name\": \"{{Reporter}}\"\r\n        },\r\n        \"versions\":\r\n        [\r\n        {\r\n        \t\"name\":\"{{Version}}\"\r\n        }\r\n        ],\r\n        \"description\": \"{{EPIC NAME}}\\r\\n\\r\\nThis is a top level EPIC issue.\\r\\n\\r\\nThis relates to {{Impact Name}}\",\r\n        \"assignee\":{\"name\":\"{{Assignee}}\"},\r\n        \"customfield_#####\":\t\t\t\t\t\t\t--Client or Impact Area (Remove this comment before running)\r\n        [\r\n          {\r\n            \"value\": \"{{Impact Name}}\"\r\n          }\r\n        ]\r\n       }\r\n    }\r\n    ],\r\n    \r\n  \"links\": []\r\n}",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "https://{{JiraHost}}/rest/api/2/issue/bulk",
+					"protocol": "https",
+					"host": [
+						"{{JiraHost}}"
+					],
+					"path": [
+						"rest",
+						"api",
+						"2",
+						"issue",
+						"bulk"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2) Task With 2 Sub-Tasks",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "66a1f6f2-69a9-418a-8244-8676c6f87005",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"var resultKey = jsonData.issues[0].key ",
+							"pm.collectionVariables.set(\"Task 2 Key\",jsonData.issues[0].key)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"issueUpdates\": \r\n    [\r\n        \r\n    {\r\n      \"fields\": \r\n      {\r\n          \"project\": \r\n          {\r\n          \"key\": \"{{Project Key}}\"\r\n          },\r\n          \"customfield_10711\": \"{{EPIC KEY}}\",\r\n          \"summary\": \"{{EPIC REF}} - {{Version}} - Static Summary Text\",\r\n          \"issuetype\":\r\n          {\r\n              \"name\": \"Task\"\r\n          },\r\n          \"priority\": \r\n          {\r\n              \"name\": \"3\"\r\n          },\r\n          \"reporter\": \r\n          {\r\n              \"name\": \"{{Reporter}}\"\r\n          },\r\n          \"versions\":\r\n          [\r\n          {\r\n        \t\"name\":\"{{Version}}\"\r\n          }\r\n          ],\r\n          \"description\": \"This task has 2 sub-tasks. Below example bullet list:\\r\\n * Point 1\\r\\n * Point 2\\r\\n * Here is a URL - [Click Here|https://www.InsertWebAddress.com]\\r\\n * *{color:#FF0000}Here is some Bold and Red formatted text.{color}*\",\r\n          \"assignee\":{\"name\":\"{{Assignee}}\"},\r\n          \"labels\": \r\n          [\r\n              \"LabelForTicket\",\r\n              \"LabelForTicket2\"\r\n          ],\r\n          \"customfield_#####\": \t\t\t\t\t\t\t--Client or Impact Area (Remove this comment before running)\r\n          [\r\n              {\r\n                  \"value\": \"{{Impact Name}}\"\r\n              }\r\n          ],\r\n          \"duedate\": \"{{Due Date}}\"\r\n        },\r\n            \"subTasks\": [],\r\n  \"links\": []\r\n}\r\n]\r\n}",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "https://{{JiraHost}}/rest/api/2/issue/bulk",
+					"protocol": "https",
+					"host": [
+						"{{JiraHost}}"
+					],
+					"path": [
+						"rest",
+						"api",
+						"2",
+						"issue",
+						"bulk"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.1) Sub-Task 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "66a1f6f2-69a9-418a-8244-8676c6f87005",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"issueUpdates\": \r\n    [\r\n        \r\n    {\r\n      \"fields\": \r\n      {\r\n          \"project\": \r\n          {\r\n          \"key\": \"{{Project Key}}\"\r\n          },  \r\n          \"parent\":\r\n        {\r\n            \"key\": \"{{Task 2 Key}}\"\r\n        },\r\n          \"summary\": \"{{EPIC ABC}} - {{Version}} - Static Summary Text\",\r\n          \"issuetype\":\r\n          {\r\n              \"name\": \"Sub-task\"\r\n          },\r\n          \"priority\": \r\n          {\r\n              \"name\": \"3\"\r\n          },\r\n          \"reporter\": \r\n          {\r\n              \"name\": \"{{Reporter}}\"\r\n          },\r\n           \"versions\":\r\n          [\r\n          {\r\n        \t\"name\":\"{{Version}}\"\r\n          }\r\n          ],\r\n          \"description\": \"* This is Sub-Task 1 of 2\",\r\n          \"assignee\":{\"name\":\"{{Assignee}}\"},\r\n          \"labels\": \r\n          [\r\n              \"Sub-Task-1\"\r\n          ],\r\n          \"customfield_#####\": \t\t\t\t\t\t\t--Client or Impact Area (Remove this comment before running)\r\n          [\r\n              {\r\n                  \"value\": \"{{Impact Name}}\"\r\n              }\r\n          ],\r\n          \"duedate\": \"{{Due Date}}\"\r\n        },\r\n  \"subTasks\": [],\r\n  \"links\": []\r\n}\r\n]\r\n}",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "https://{{JiraHost}}/rest/api/2/issue/bulk",
+					"protocol": "https",
+					"host": [
+						"{{JiraHost}}"
+					],
+					"path": [
+						"rest",
+						"api",
+						"2",
+						"issue",
+						"bulk"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.2) Sub-Task 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "66a1f6f2-69a9-418a-8244-8676c6f87005",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"issueUpdates\": \r\n    [\r\n        \r\n    {\r\n      \"fields\": \r\n      {\r\n          \"project\": \r\n          {\r\n          \"key\": \"{{Project Key}}\"\r\n          },  \r\n          \"parent\":\r\n        {\r\n            \"key\": \"{{Task 2 Key}}\"\r\n        },\r\n          \"summary\": \"{{EPIC ABC}} - {{Version}} - Static Summary Text\",\r\n          \"issuetype\":\r\n          {\r\n              \"name\": \"Sub-task\"\r\n          },\r\n          \"priority\": \r\n          {\r\n              \"name\": \"3\"\r\n          },\r\n          \"reporter\": \r\n          {\r\n              \"name\": \"{{Reporter}}\"\r\n          },\r\n           \"versions\":\r\n          [\r\n          {\r\n        \t\"name\":\"{{Version}}\"\r\n          }\r\n          ],\r\n          \"description\": \"This is Sub-Task 2 of 2.\\r\\nh1. list\\r\\n # Item 1\\r\\n # Item 2\\r\\n # Item 3\\r\\n\\r\\nh2. List 2 \\r\\n\\r\\nItem 4\\r\\nh2. List 3\\r\\n * Item 5\\r\\n * Item 6\\r\\n * Item 7\\r\\n * Item 8\\r\\n\\r\\nh2. New Section:\\r\\n\\r\\nSee ([*Bold Webpage Link*|https://www.yourlink.com])\\r\\n\\r\\nMore Format Examples \\r\\n|h3. EG1|h3. Name|h3. EG2|h3. Name|h3. EG3|h3. Name|h3. EG4|h3. Name|h3. EG5)|\\r\\n|{color:#505f79}Red Text{color}|{color:#505f79}Red text{color}|{color:#505f79}Red Text{color}|{color:#505f79}Red Text{color}|{color:#505f79}Red Text{color}|{color:#505f79}Red Text{color}|{color:#505f79}Red Text{color}|{color:#505f79} Red Text{color}|{color:#505f79}Red Text{color}|\\r\\n\\r\\n\",\r\n          \"assignee\":{\"name\":\"{{Assignee}}\"},\r\n          \"labels\": \r\n          [\r\n              \"Sub-Task-2\"\r\n          ],\r\n          \"customfield_#####\": \t\t\t\t\t\t\t--Client or Impact Area (Remove this comment before running)\r\n          [\r\n              {\r\n                  \"value\": \"{{Impact Name}}\"\r\n              }\r\n          ]\r\n        },\r\n  \"subTasks\": [],\r\n  \"links\": []\r\n}\r\n]\r\n}",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "https://{{JiraHost}}/rest/api/2/issue/bulk",
+					"protocol": "https",
+					"host": [
+						"{{JiraHost}}"
+					],
+					"path": [
+						"rest",
+						"api",
+						"2",
+						"issue",
+						"bulk"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3) Task With Issue Link",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "66a1f6f2-69a9-418a-8244-8676c6f87005",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"var resultKey = jsonData.issues[0].key ",
+							"pm.collectionVariables.set(\"Task 3 Key\",jsonData.issues[0].key)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"issueUpdates\": \r\n    [\r\n        \r\n    {\r\n      \"fields\": \r\n      {\r\n          \"project\": \r\n          {\r\n          \"key\": \"{{Project Key}}\"\r\n          },\r\n          \"customfield_10711\": \"{{EPIC KEY}}\",\r\n          \"summary\": \"{{EPIC ABC}} - {{Version}} - Static Summary Text\",\r\n          \"issuetype\":\r\n          {\r\n              \"name\": \"Task\"\r\n          },\r\n          \"priority\": \r\n          {\r\n              \"name\": \"3\"\r\n          },\r\n          \"reporter\": \r\n          {\r\n              \"name\": \"{{Reporter}}\"\r\n          },\r\n          \"versions\":\r\n          [\r\n          {\r\n        \t\"name\":\"{{Version}}\"\r\n          }\r\n          ],\r\n          \"description\": \"Sample Description Text\\r\\n\\r\\nSample Description Text\\r\\n\\r\\nLink to GIT Repository(CLICK HERE|https://confluence.kalibrate.com/display/AD2/Continuous+Delivery+-+Phase+1)\",\r\n          \"assignee\":{\"name\":\"{{Assignee}}\"},\r\n          \"labels\": \r\n          [\r\n              \"Label-For-Issue-With-Link-Ticket\"\r\n          ],\r\n          \"customfield_#####\": \t\t\t\t\t\t\t--Client or Impact Area (Remove this comment before running)\r\n          [\r\n              {\r\n                  \"value\": \"{{Impact Name}}\"\r\n              }\r\n          ]\r\n      \t },\r\n      \t  \"update\":{\r\n        \"issuelinks\":[\r\n         {\r\n            \"add\":{\r\n               \"type\":{\r\n                  \"name\":\"Gantt End to Start\",\r\n                  \"inward\":\"has to be done after\",\r\n                  \"outward\":\"has to be done before\"\r\n               },\r\n               \"inwardIssue\":{\r\n                  \"key\":\"{{Task 2 Key}}\"\r\n                              }\r\n                   }\r\n         }\r\n               ]\r\n          },\r\n            \"subTasks\": []\r\n    }\r\n  ],\r\n  \"links\": []\r\n}",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "https://{{JiraHost}}/rest/api/2/issue/bulk",
+					"protocol": "https",
+					"host": [
+						"{{JiraHost}}"
+					],
+					"path": [
+						"rest",
+						"api",
+						"2",
+						"issue",
+						"bulk"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4) Update Task Link Only - Do Before",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "66a1f6f2-69a9-418a-8244-8676c6f87005",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\": {\r\n        \"name\": \"Gantt End to Start\",\r\n\t    \"inward\": \"has to be done after\",\r\n\t    \"outward\": \"has to be done before\"\r\n    },\r\n    \"inwardIssue\": {\r\n        \"key\": \"{{Task 2 Key}}\"\r\n    },\r\n    \"outwardIssue\": {\r\n        \"key\": \"{{Task 3 Key}}\"\r\n    }\r\n}",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "https://{{JiraHost}}/rest/api/2/issueLink",
+					"protocol": "https",
+					"host": [
+						"{{JiraHost}}"
+					],
+					"path": [
+						"rest",
+						"api",
+						"2",
+						"issueLink"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5) Update Task Link Only - Relates",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "66a1f6f2-69a9-418a-8244-8676c6f87005",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\": {\r\n        \"name\": \"Relates\"\r\n    },\r\n    \"inwardIssue\": {\r\n        \"key\": \"{{Task 2 Key}}\"\r\n    },\r\n    \"outwardIssue\": {\r\n        \"key\": \"{{Task 3 Key}}\"\r\n    }\r\n}",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "https://jira.kalibrate.com:443/rest/api/2/issueLink",
+					"protocol": "https",
+					"host": [
+						"jira",
+						"kalibrate",
+						"com"
+					],
+					"port": "443",
+					"path": [
+						"rest",
+						"api",
+						"2",
+						"issueLink"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "[PASSWORD]",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "[JIRA-USERNAME]",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "4eca74d0-80be-49f7-aa8b-d7584f672a85",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "fbce5bcc-a193-4e22-a3e5-7ad0a565e14f",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "14054e5c-6344-4c14-b3d0-e0c988651968",
+			"key": "EPIC REF",
+			"value": "Your Epic's Ref for Summary",
+			"type": "string"
+		},
+		{
+			"id": "4e1e5fb5-5965-4e36-8121-b3610e408c55",
+			"key": "EPIC NAME",
+			"value": "For Epic Summary Field",
+			"type": "string"
+		},
+		{
+			"id": "c3c27089-237b-4b0e-8ef2-6d00dd3d0e6e",
+			"key": "Reporter",
+			"value": "REPORTER",
+			"type": "string"
+		},
+		{
+			"id": "e69bccf4-4400-4938-9b1f-8744f9418b8e",
+			"key": "Assignee",
+			"value": "ASSIGNEE",
+			"type": "string"
+		},
+		{
+			"id": "50f4a73c-b007-4cd3-8aaf-9a60d47acbb8",
+			"key": "Project Key",
+			"value": "Target Project Key",
+			"type": "string"
+		},
+		{
+			"id": "49fb1e8f-5a5d-4840-8f70-02396a0b20d5",
+			"key": "EPIC KEY",
+			"value": "Auto Populates",
+			"type": "string"
+		},
+		{
+			"id": "98556417-2da7-4c62-a36d-a1d0d4fd7976",
+			"key": "JiraHost",
+			"value": "Your Jira Server URL",
+			"type": "string"
+		},
+		{
+			"id": "09db8bf5-cfbb-4214-8d6a-2a3e04d4f654",
+			"key": "Version",
+			"value": "Project Version (must exist)",
+			"type": "string"
+		},
+		{
+			"id": "4b9362ae-aaaf-4489-bf60-6e9a507af668",
+			"key": "Impact Name",
+			"value": "ArrayValueClientOrComponent",
+			"type": "string"
+		},
+		{
+			"id": "7f6c0598-3cd3-41d7-a698-9a1f997e05f4",
+			"key": "Due Date",
+			"value": "Jira Date Format",
+			"type": "string"
+		},
+		{
+			"id": "c580ca37-ff01-4dcc-b2c4-1f8874ff6f0b",
+			"key": "Task 2 Key",
+			"value": "Auto Populates",
+			"type": "string"
+		},
+		{
+			"id": "94c32e82-f70e-4105-8a55-abfd911397fa",
+			"key": "Task 3 Key",
+			"value": "Auto Populates",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
