@@ -1,8 +1,8 @@
 {
 	"info": {
-		"_postman_id": "bcf280fc-f7af-48d7-9dbb-6da3b631ad69",
-		"name": "Jira Server Epic/Task Template Collection",
-		"description": "The Postman Collections serve as a template which demonstrates a number of ways to post both issue types, links and field type values to Jira Cloud using Epics and Epic Links; \r\nIf you find any issues, want to request Readme updates etc please dont hesitate to check out the Github Repo:\r\nhttps://github.com/Airsickmammal/Jira-Server-Epic-Task-Repeatable-Template-Collections-for-Postman \r\n\r\nYou can also find me on Linkedin, Twitter, Twitch under username \"Airsickmammal\". \r\nAlways happy to hear from and collaborate with the community.\r\n\r\n----------------\r\n\r\nFor Jira Server use REST API version 2 (already in the URLs within this collection). \r\n\r\nTo use the API you will need collaborative rights to any target Jira projects.\r\n\r\nUse basic Authentication on the \"Authorization\" tab (above), input your basic username and password. \r\n\r\nEPIC and Task Jira issue types must be enabled within your project to work with the vanilla postman collection.\r\nEpic Name, Epic Link are required fields within your project. Epic Name being specific to the EPIC issue type.\r\n\r\n2 ways to get the custom field number for Epic Name and Epic Link: \r\n1) Go to your global settings, Custom Fields, select Epic Name field, the url will contain \"customFieldid=#####\" you need to update in the json file. \r\n2) Use rest API to find the required field(s). You can find this under the \"queries\" folder or simply note down a Jira issue reference which contains the fields you need, and replace [Jira Host] and [ABC-1] with yours (minus the square brackets):\r\nhttps://[Jira Host]/rest/api/2/search?jql=key=[ABC-1]\r\n\r\n---------------------\r\nPLEASE NOTE - in the API POST calls i have included a few notes, prefixed with \"--\", you need to remove these when you try to send the POST or it will fail, these are just to instruct with your first time using the template.\r\n---------------------\r\n\r\nFill in the following Variables (see above Variables Tab)\r\n* EPIC REF - Reference for your Epic (e.g. ABC)\r\n* EPIC NAME - Summary/Title for your Epic\r\n* Reporter\r\n* Assignee\r\n* Project Key - Key of your project that normally forms the pre-fix (e.g Issues ABC-1, ABC-2, your Project Key is ABC)\r\n* Jira Host - Your Jira Server URL e.g. jira.Host.com\r\n* Version - Use the version GET in Queries folder to obtain the version Name if you choose to use this\r\n* Impact Name - Create an Array or List field to use this, exampls shows how to enter in a value, this could be a component, or a client's name, whatever your impact name list is defined with\r\n* Due Date - Due date of the issue if you choose to use this, must be in Jira date format e.g. 2020-06-20T00:00:00.000+0100\r\n\r\nThese fields auto populate\r\n* EPIC KEY - Populates with the issue Key of the epic (e.g. ABC-1) using a \"test\" after the API call has run\r\n* Task 2 Key, and Task 3 Key: Used in the Vanilla collection to populate with the \"2) Task With 2 Sub-Tasks\" and \"3) Task With Issue Link\" issue keys, for use with updating ticket links in API call steps 4) and 5)\r\nTo see the \"test\" which auto populates the values go to either API calls 1), 2) or 3) and select the \"Tests\" tab\r\n",
+		"_postman_id": "9dbb6e21-0636-4a37-818e-efcb94699b84",
+		"name": "Jira Cloud Epic/Task Template Collection",
+		"description": "The Postman Collections serve as a template which demonstrates a number of ways to post both issue types, links and field type values to Jira Cloud using Epics and Epic Links; \r\nIf you find any issues, want to request Readme updates etc please dont hesitate to check out the Github Repo:\r\nhttps://github.com/Airsickmammal/Jira-Server-Epic-Task-Repeatable-Template-Collections-for-Postman \r\n\r\nYou can also find me on Linkedin, Twitter, Twitch under username \"Airsickmammal\". \r\nAlways happy to hear from and collaborate with the community.\r\n\r\n----------------\r\n\r\nFor Jira Cloud use REST API version 3 (already in the URLs within this collection). \r\n\r\nTo use the API you will need to generate a token via Atlassian api-tokens site here: \r\nhttps://id.atlassian.com/manage-profile/security/api-tokens\r\n\r\nUse basic Authentication on the \"Authorization\" tab (above), input your basic username and then the token as your password. \r\n\r\nEPIC and Task Jira issue types must be enabled within your project to work with the vanilla postman collection.\r\nEpic Name, Epic Link are required fields within your project. Epic Name being specific to the EPIC issue type.\r\n\r\n2 ways to get the custom field number for Epic Name and Epic Link: \r\n1) Go to your global settings, Custom Fields, select Epic Name field, the url will contain \"customFieldid=#####\" you need to update in the json file. \r\n2) I found a brief explanation of this on the following Atlassian site: https://developer.atlassian.com/cloud/jira/software/rest/#introduction\r\n3) Use rest API to find the required field(s). You can find this under the \"queries\" folder or simply note down a Jira issue reference which contains the fields you need, and replace [Jira Host] and [ABC-1] with yours (minus the square brackets):\r\nhttps://[Jira Host]/rest/api/3/search?jql=key=[ABC-1]\r\n\r\n---------------------\r\nPLEASE NOTE - in the API POST calls i have included a few notes, prefixed with \"--\", you need to remove these when you try to send the POST or it will fail, these are just to instruct with your first time using the template.\r\n---------------------\r\n\r\nFill in the following Variables (see above Variables Tab)\r\n* EPIC REF - Reference for your Epic (e.g. ABC)\r\n* EPIC NAME - Summary/Title for your Epic\r\n* Reporter\r\n* Assignee\r\n* Project Key - Key of your project that normally forms the pre-fix (e.g Issues ABC-1, ABC-2, your Project Key is ABC)\r\n* Jira Host - Your Jira Cloud URL e.g. ABC.atlassian.net\r\n* Version - Use the version GET in Queries folder to obtain the version Name if you choose to use this\r\n* Impact Name - Create an Array or List field to use this, exampls shows how to enter in a value, this could be a component, or a client's name, whatever your impact name list is defined with\r\n* Due Date - Due date of the issue if you choose to use this, must be in Jira date format e.g. 2020-06-20T00:00:00.000+0100\r\n\r\nThese fields auto populate\r\n* EPIC KEY - Populates with the issue Key of the epic (e.g. ABC-1) using a \"test\" after the API call has run\r\n* Task 2 Key, and Task 3 Key: Used in the Vanilla collection to populate with the \"2) Task With 2 Sub-Tasks\" and \"3) Task With Issue Link\" issue keys, for use with updating ticket links in API call steps 4) and 5)\r\nTo see the \"test\" which auto populates the values go to either API calls 1), 2) or 3) and select the \"Tests\" tab\r\n",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -197,7 +197,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "d5ee73b4-4752-4761-9274-ff90024c7c31",
+						"id": "e68d65c7-29c7-41ba-9d9e-4b096ce93583",
 						"exec": [
 							"var jsonData = JSON.parse(responseBody);",
 							"var resultKey = jsonData.issues[0].key ",
@@ -209,7 +209,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "ee879957-dff0-49f4-885e-53bd8e979499",
+						"id": "22a798d9-f7fb-4e9d-a166-808838c02b99",
 						"exec": [
 							""
 						],
@@ -257,7 +257,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "101ecfc0-c7f5-47ce-8596-f09d107755eb",
+						"id": "c504737b-9fe7-4406-8be6-8aa2c9af89cf",
 						"exec": [
 							"var jsonData = JSON.parse(responseBody);",
 							"var resultKey = jsonData.issues[0].key ",
@@ -279,7 +279,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"issueUpdates\": \r\n    [\r\n        \r\n    {\r\n      \"fields\": \r\n      {\r\n          \"project\": \r\n          {\r\n          \"key\": \"{{Project Key}}\"\r\n          },\r\n          \"customfield_#####\": \"{{EPIC KEY}}\",\r\n          \"summary\": \"{{EPIC REF}} - {{Version}} - Static Summary Text\",\r\n          \"issuetype\":\r\n          {\r\n              \"name\": \"Task\"\r\n          },\r\n          \"priority\": \r\n          {\r\n              \"name\": \"3\"\r\n          },\r\n          \"reporter\": \r\n          {\r\n              \"name\": \"{{Reporter}}\"\r\n          },\r\n          \"versions\":\r\n          [\r\n          {\r\n        \t\"name\":\"{{Version}}\"\r\n          }\r\n          ],\r\n          \"description\": \"This task has 2 sub-tasks. Below example bullet list:\\r\\n * Point 1\\r\\n * Point 2\\r\\n * Here is a URL - [Click Here|https://www.InsertWebAddress.com]\\r\\n * *{color:#FF0000}Here is some Bold and Red formatted text.{color}*\",\r\n          \"assignee\":{\"name\":\"{{Assignee}}\"},\r\n          \"labels\": \r\n          [\r\n              \"LabelForTicket\",\r\n              \"LabelForTicket2\"\r\n          ],\r\n          \"customfield_#####\": \t\t\t\t\t\t\t--Client or Impact Area (Remove this comment before running)\r\n          [\r\n              {\r\n                  \"value\": \"{{Impact Name}}\"\r\n              }\r\n          ],\r\n          \"duedate\": \"{{Due Date}}\"\r\n        },\r\n            \"subTasks\": [],\r\n  \"links\": []\r\n}\r\n]\r\n}",
+					"raw": "{\r\n    \"issueUpdates\": \r\n    [\r\n        \r\n    {\r\n      \"fields\": \r\n      {\r\n          \"project\": \r\n          {\r\n          \"key\": \"{{Project Key}}\"\r\n          },\r\n          \"customfield_10711\": \"{{EPIC KEY}}\",\r\n          \"summary\": \"{{EPIC REF}} - {{Version}} - Static Summary Text\",\r\n          \"issuetype\":\r\n          {\r\n              \"name\": \"Task\"\r\n          },\r\n          \"priority\": \r\n          {\r\n              \"name\": \"3\"\r\n          },\r\n          \"reporter\": \r\n          {\r\n              \"name\": \"{{Reporter}}\"\r\n          },\r\n          \"versions\":\r\n          [\r\n          {\r\n        \t\"name\":\"{{Version}}\"\r\n          }\r\n          ],\r\n          \"description\": \"This task has 2 sub-tasks. Below example bullet list:\\r\\n * Point 1\\r\\n * Point 2\\r\\n * Here is a URL - [Click Here|https://www.InsertWebAddress.com]\\r\\n * *{color:#FF0000}Here is some Bold and Red formatted text.{color}*\",\r\n          \"assignee\":{\"name\":\"{{Assignee}}\"},\r\n          \"labels\": \r\n          [\r\n              \"LabelForTicket\",\r\n              \"LabelForTicket2\"\r\n          ],\r\n          \"customfield_#####\": \t\t\t\t\t\t\t--Client or Impact Area (Remove this comment before running)\r\n          [\r\n              {\r\n                  \"value\": \"{{Impact Name}}\"\r\n              }\r\n          ],\r\n          \"duedate\": \"{{Due Date}}\"\r\n        },\r\n            \"subTasks\": [],\r\n  \"links\": []\r\n}\r\n]\r\n}",
 					"options": {
 						"raw": {}
 					}
@@ -307,7 +307,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "19fe0810-5fca-4e40-af70-57a15799aea2",
+						"id": "ce44570f-7647-4510-a4f4-5bbea59c8a47",
 						"exec": [
 							""
 						],
@@ -355,7 +355,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "e99f5a4d-00d5-4e3d-87df-b71b65068fed",
+						"id": "844468f5-a1b4-40a5-90d1-ec37f1a7d387",
 						"exec": [
 							""
 						],
@@ -403,7 +403,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "f14285e0-1e27-49b6-ae05-3bf2e03dd29d",
+						"id": "7c5ea8b4-6d22-4487-9600-e4ec8edea873",
 						"exec": [
 							"var jsonData = JSON.parse(responseBody);",
 							"var resultKey = jsonData.issues[0].key ",
@@ -453,7 +453,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "7f9356c9-c647-401d-8340-29919e14f659",
+						"id": "b5f49920-99b2-4bd4-970f-cb63671c1de4",
 						"exec": [
 							""
 						],
@@ -500,7 +500,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "09a4ca9c-eb87-445c-9231-9e1e87314cdc",
+						"id": "875800ce-ab7e-403d-8e1d-a0e4f9b786e2",
 						"exec": [
 							""
 						],
@@ -550,12 +550,12 @@
 		"basic": [
 			{
 				"key": "password",
-				"value": "[Password]",
+				"value": "[Token]",
 				"type": "string"
 			},
 			{
 				"key": "username",
-				"value": "[UserName]",
+				"value": "[JIRA-USERNAME]",
 				"type": "string"
 			}
 		]
@@ -564,7 +564,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "86d297ca-d3d3-4bb5-8f82-8e72af717fd2",
+				"id": "826304de-7fe1-4ca1-b476-e02cdafa75bd",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -574,7 +574,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "009c4d86-cdf4-4ffa-bcc3-bd18b479c0db",
+				"id": "3bc3075b-50d7-46e5-9548-c9b422f101b2",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -584,73 +584,73 @@
 	],
 	"variable": [
 		{
-			"id": "09453153-f1b3-43ca-986d-dc49a8bd84df",
+			"id": "a74650cf-2581-4607-bd72-6cd8cfc383cf",
 			"key": "EPIC REF",
 			"value": "Your Epic's Ref for Summary",
 			"type": "string"
 		},
 		{
-			"id": "6ee1f4ff-fff0-4531-95b3-a8a619703931",
+			"id": "ac4bb048-6ac0-4875-87d4-385f49eb1884",
 			"key": "EPIC NAME",
 			"value": "For Epic Summary Field",
 			"type": "string"
 		},
 		{
-			"id": "3ea2e384-cc86-48f7-b7b2-52a731b136d7",
+			"id": "15bd2da4-5fce-49f5-a60f-58dc40be0edc",
 			"key": "Reporter",
 			"value": "REPORTER",
 			"type": "string"
 		},
 		{
-			"id": "ffa7161f-333c-4c3a-9f42-dd740989ce17",
+			"id": "13ed4a9e-8fcb-4bbc-bda0-e2bb26698b7a",
 			"key": "Assignee",
 			"value": "ASSIGNEE",
 			"type": "string"
 		},
 		{
-			"id": "921d7b9b-0210-4347-90ba-2903ada24bde",
+			"id": "3808ceef-d66b-44d9-bae3-3677c82563b6",
 			"key": "Project Key",
 			"value": "Target Project Key",
 			"type": "string"
 		},
 		{
-			"id": "9a0877ce-190c-4dda-b32d-a8decfb62639",
+			"id": "9b3e59d5-88ac-48e4-943b-7e02da18776a",
 			"key": "EPIC KEY",
 			"value": "Auto Populates",
 			"type": "string"
 		},
 		{
-			"id": "e5a3bd44-8114-4dc7-9988-8d45195d9805",
+			"id": "e2cf1d4e-63b3-413b-b386-5a2c966a3a8e",
 			"key": "JiraHost",
 			"value": "Your Jira Server URL",
 			"type": "string"
 		},
 		{
-			"id": "41b55332-8b8f-48cf-a738-f4493eba4072",
+			"id": "c523b073-736c-431c-ab44-950ea01099e3",
 			"key": "Version",
 			"value": "Project Version (must exist)",
 			"type": "string"
 		},
 		{
-			"id": "355982fe-e2d2-4855-b275-bf865efd397f",
+			"id": "651922fe-3253-4413-a286-c4a821d62341",
 			"key": "Impact Name",
 			"value": "ArrayValueClientOrComponent",
 			"type": "string"
 		},
 		{
-			"id": "9591a832-f811-4ab4-a0fe-ecd5a69c4a97",
+			"id": "7c8ecae2-26da-4fef-b5e4-4f46fa9a7c56",
 			"key": "Due Date",
 			"value": "Jira Date Format",
 			"type": "string"
 		},
 		{
-			"id": "1e4752c1-c874-451a-ac49-8087d88006b8",
+			"id": "f4fb0ef8-6afd-4c55-9af2-b0adf8829c90",
 			"key": "Task 2 Key",
 			"value": "Auto Populates",
 			"type": "string"
 		},
 		{
-			"id": "593421f2-95b5-49c6-9f92-40c7937c8b5a",
+			"id": "72d0c0ec-9cf5-4402-83e5-38b5d961ecce",
 			"key": "Task 3 Key",
 			"value": "Auto Populates",
 			"type": "string"
