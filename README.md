@@ -7,7 +7,11 @@ If you find any issues, want to request Readme updates etc please dont hesitate 
 You can find me on Linkedin, Twitter, Twitch under username "Airsickmammal". 
 Always happy to hear from and collaborate with the community.
 
----Readme Under Construction---
+Also Available on the Postman Templates Site. 
+Server: https://documenter.getpostman.com/view/10332232/SzzobbJ7?version=latest
+Cloud: https://documenter.getpostman.com/view/10332232/SzzobbJ8?version=latest
+
+---Readme Still Under Construction---
 
 ------------------------------
 Pre-Requisites: 
